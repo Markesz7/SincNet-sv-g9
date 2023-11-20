@@ -56,7 +56,6 @@ for i in range(len(list_sig)):
  
  # Open the wav file
  wav_file=in_folder+'/'+list_sig[i]
- print(wav_file)
  [signal, fs] = sf.read(wav_file)
  signal=signal.astype(np.float64)
 
@@ -80,4 +79,4 @@ for i in range(len(list_sig)):
 
  sf.write(file_out, signal, fs)
  
- #print("Done %s" % (file_out))
+ print("Done %s" % (file_out))
