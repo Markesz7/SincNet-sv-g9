@@ -25,7 +25,6 @@ from dnn_models import MLP,flip
 from dnn_models import SincNet as CNN 
 from data_io import ReadList,read_conf,str_to_bool
 
-
 def create_batches_rnd(batch_size,data_folder,wav_lst,N_snt,wlen,lab_dict,fact_amp):
     
  # Initialization of the minibatch (batch_size,[0=>x_t,1=>x_t+N,1=>random_samp])
