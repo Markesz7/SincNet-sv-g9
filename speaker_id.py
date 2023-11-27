@@ -11,6 +11,7 @@
 # python speaker_id.py --cfg=cfg/SincNet_TIMIT.cfg
 
 import os
+os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 #import scipy.io.wavfile
 import soundfile as sf
 import torch
@@ -197,7 +198,7 @@ DNN2_arch = {'input_dim':fc_lay[-1] ,
           'fc_act': class_act,
           }
 
-
+print(DNN2_arch)
 DNN2_net=MLP(DNN2_arch)
 DNN2_net.cuda()
 
@@ -233,6 +234,8 @@ for epoch in range(N_epochs):
     
     pred=torch.max(pout,dim=1)[1]
     loss = cost(pout, lab.long())
+    print(pred)
+    print(lab.long())
     err = torch.mean((pred!=lab.long()).float())
     
    

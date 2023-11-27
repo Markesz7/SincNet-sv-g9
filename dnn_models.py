@@ -6,6 +6,9 @@ import sys
 from torch.autograd import Variable
 import math
 
+torch.set_default_tensor_type('torch.cuda.FloatTensor')
+print(torch.cuda.is_available())
+
 def flip(x, dim):
     xsize = x.size()
     dim = x.dim() + dim if dim < 0 else dim
@@ -292,14 +295,25 @@ class MLP(nn.Module):
         self.N_fc_lay=len(self.fc_lay)
              
         current_input=self.input_dim
-        
+        print('self.fc_lay')
+        print(self.fc_lay)
+
+        print('self.N_fc_lay Here we are')
+        print(self.N_fc_lay)
         # Initialization of hidden layers
         
         for i in range(self.N_fc_lay):
             
+         print('Index')
+         print(i)
+
+         print(self.fc_drop[i])
+
+        
          # dropout
          self.drop.append(nn.Dropout(p=self.fc_drop[i]))
          
+         print(self.fc_act[i])
          # activation
          self.act.append(act_fun(self.fc_act[i]))
          
