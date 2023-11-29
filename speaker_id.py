@@ -234,11 +234,7 @@ for epoch in range(N_epochs):
     
     pred=torch.max(pout,dim=1)[1]
     loss = cost(pout, lab.long())
-    print(pred)
-    print(lab.long())
-    err = torch.mean((pred!=lab.long()).float())
-    
-   
+    err = torch.mean((pred!=lab.long()).float())  
     
     optimizer_CNN.zero_grad()
     optimizer_DNN1.zero_grad() 
@@ -286,10 +282,9 @@ for epoch in range(N_epochs):
      end_samp=wlen
      
      N_fr=int((signal.shape[0]-wlen)/(wshift))
-     
 
      sig_arr=torch.zeros([Batch_dev,wlen]).float().cuda().contiguous()
-     lab= Variable((torch.zeros(N_fr+1)+lab_batch).cuda().contiguous().long())
+     lab= Variable((torch.zeros(N_fr+1)+int(lab_batch)).cuda().contiguous().long())
      pout=Variable(torch.zeros(N_fr+1,class_lay[-1]).float().cuda().contiguous())
      count_fr=0
      count_fr_tot=0
