@@ -30,12 +30,8 @@ label_dict = {}
 scp_list_training = []
 scp_list_test = []
 
-# In the new folders, start the speaker ids from 0, so we can give the sincnet config the right amount of speakers for the softmax layer.
-speaker_id = 0
-
 # Go through all the speakers
 speakers = os.listdir(input_dir)
-number_of_speakers = len(speakers)
 for speaker in speakers:
     speaker_path = os.path.join(input_dir, speaker)
     if os.path.isdir(speaker_path):
@@ -46,8 +42,8 @@ for speaker in speakers:
             random.shuffle(chapters)
 
         # Create speaker output directories if they don't exist
-        output_train_speaker_dir = os.path.join(output_train_dir, str(speaker_id))
-        output_test_speaker_dir = os.path.join(output_test_dir, str(speaker_id))
+        output_train_speaker_dir = os.path.join(output_train_dir, speaker)
+        output_test_speaker_dir = os.path.join(output_test_dir, speaker)
         os.makedirs(output_train_speaker_dir, exist_ok=True)
         os.makedirs(output_test_speaker_dir, exist_ok=True)
 
@@ -82,12 +78,9 @@ for speaker in speakers:
                         wav_file = os.path.join(output_test_speaker_dir, os.path.splitext(flac_file)[0] + ".wav")
                         scp_list_test.append(wav_file)
                     
-                    label_dict[wav_file] = speaker_id
+                    label_dict[wav_file] = speaker
                     convert_flac_to_wav(flac_path, wav_file)
                 i += 1
-    speaker_id += 1
-    if(speaker_id % 5 == 0):
-        print(f'Preprocessing is {speaker_id / number_of_speakers * 100}% done!')
 
 # Swich back to root directory                        
 os.chdir(cwd)

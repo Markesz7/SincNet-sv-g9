@@ -252,8 +252,6 @@ for epoch in range(N_epochs):
   loss_tot=loss_sum/N_batches
   err_tot=err_sum/N_batches
   
- 
-   
    
 # Full Validation  new  
   if epoch%N_eval_epoch==0:
@@ -268,7 +266,7 @@ for epoch in range(N_epochs):
    
    with torch.no_grad():  
     for i in range(snt_te):
-       
+     
      #[fs,signal]=scipy.io.wavfile.read(data_folder+wav_lst_te[i])
      #signal=signal.astype(float)/32768
 

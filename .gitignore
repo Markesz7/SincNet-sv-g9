@@ -3,3 +3,7 @@ data/
 normalized_data/
 
 __pycache__/
+
+AllResults/
+
+data_lists/
