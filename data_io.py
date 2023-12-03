@@ -26,6 +26,8 @@ def read_conf():
  #[data]
  options.tr_lst=Config.get('data', 'tr_lst')
  options.te_lst=Config.get('data', 'te_lst')
+ options.test_model_path=Config.get('data', 'test_model_path')
+ options.test_files=Config.get('data', 'test_files')
  options.lab_dict=Config.get('data', 'lab_dict')
  options.data_folder=Config.get('data', 'data_folder')
  options.output_folder=Config.get('data', 'output_folder')
