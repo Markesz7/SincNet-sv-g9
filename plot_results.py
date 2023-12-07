@@ -3,7 +3,9 @@ import re
 import matplotlib.pyplot as plt
 
 # Define the file path
-file_path = 'results_650_b128_1024_1024_1024/res.res'
+#file_path = 'results_650_b128_1024_1024_1024/res.res'
+#file_path = 'results_SincNet_500_b128/res.res'
+file_path = 'results_CNN_500_b128/res.res'
 
 # Initialize an empty list to store the data
 data_list = []
@@ -49,7 +51,7 @@ plt.title('Training and Testing Loss over Epochs')
 plt.legend()
 
 # Save the figure as a PNG file
-plt.savefig('loss_curve.png')
+plt.savefig('loss_curve_CNN.png')
 
 # Plotting error curve
 plt.figure(2)
@@ -61,7 +63,7 @@ plt.title('Identification error in training and testing over epochs')
 plt.legend()
 
 # Save the figure as a PNG file
-plt.savefig('identification_error.png')
+plt.savefig('identification_error_CNN.png')
 
 
 

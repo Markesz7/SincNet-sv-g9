@@ -431,6 +431,8 @@ class SincNet(nn.Module):
 
          if i==0:
           self.conv.append(SincConv_fast(self.cnn_N_filt[0],self.cnn_len_filt[0],self.fs))
+          # For testing standard CNN instead of SincNet
+          #self.conv.append(nn.Conv1d(1, self.cnn_N_filt[0], self.cnn_len_filt[0]))
               
          else:
           self.conv.append(nn.Conv1d(self.cnn_N_filt[i-1], self.cnn_N_filt[i], self.cnn_len_filt[i]))
